@@ -1,0 +1,23 @@
+<!--logs.wxml--> 
+
+<view class="itemView">
+  <input class="input_item" id="newbag" name="bag" style="text-align:center" placeholder="添加包包编号，例如M44022"
+    bindinput="bagInput"/>
+</view>
+
+<button style="color:#ff0000;" style="opacity: {{opacity}};color: white; background-color: #bfa69a;" bindtap="addBag"  class = "button_item"  > 加个包！</button>
+
+<button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="refresh" class = "button_item" >查！</button>
+
+<view class="log-list">
+  <block wx:if="{{check_finish}}">
+    <block wx:for="{{ trace_result}}" wx:for-item="bag" wx:key="*this">
+      <view class="btnGroup" style = "flex-direction:row">
+        <text class="item blue"> {{ bag[0] }} </text>
+        <block wx:if="{{bag[1]}}" > <text class="item green">  有货 </text> </block> 
+        <block wx:else>             <text class="item orange"> 没货 </text> </block>
+      </view>
+    </block>
+  </block>
+  <block wx:else> <text class ="check_waiting"> 小询正在努力，请稍候。。。 </text> </block>
+</view>

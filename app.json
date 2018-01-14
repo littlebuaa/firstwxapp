@@ -1,0 +1,43 @@
+{
+  "pages":[
+    "pages/check_stock/check_stock",
+    "pages/contact/contact",
+    "pages/sell_buy/sell_buy",
+    "pages/sell_buy/sell/marque",
+    "pages/sell_buy/sell/sell_card/sell_card",
+    "pages/sell_buy/sell/sell_card_hermes_baokuan/sell_card_hermes_baokuan",
+    "pages/sell_buy/sell/sell_card_lv_baokuan/sell_card_lv_baokuan"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "买买买",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#bfa69a",
+    "selectedColor": "rgb(68,50,41)",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "static/checked.png",
+        "iconPath": "static/check.png",
+        "pagePath": "pages/check_stock/check_stock"
+      },
+
+      {
+        "selectedIconPath": "static/edited-image.png",
+        "iconPath": "static/edit-image.png",
+        "pagePath": "pages/sell_buy/sell_buy"
+      },
+      {
+        "selectedIconPath": "static/contacted.png",
+        "iconPath": "static/contact.png",
+        "pagePath": "pages/contact/contact"
+      }
+    ]
+  }
+}
+
+
+

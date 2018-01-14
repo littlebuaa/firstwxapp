@@ -1,0 +1,8 @@
+<!--contact.wxml-->
+
+<view class = "block_sty">
+  <view class="msg-box">
+    <text class= "text-box"  > LV 出货卡</text>
+  </view>
+</view>
+

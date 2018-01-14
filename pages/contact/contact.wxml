@@ -1,0 +1,15 @@
+<!--contact.wxml-->
+
+<view class = "block_sty">
+  <view class="msg-box">
+    <text class= "text-box"  >  {{userInfo.nickName}}  </text>
+  </view>
+ 
+  <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="getMyProductList" class = "button_item" > 我的出货 > </button>
+
+  <view wx:for="{{productList}}" wx:for-item="p" wx:key="*this" class = "btnGroup">
+      <text class="text-p"> {{p["marque"]}}{{ p["product"] }} : </text>
+      <text class="text-p"> {{p["name"]}} {{p["quan"] }} {{p["posi"] }} {{p["dscr"] }} </text>
+      <text class="text-r"> {{p["status"] }} </text>
+  </view>
+</view>

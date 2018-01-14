@@ -1,0 +1,49 @@
+/**contact.wxss**/
+.block_sty_marque {
+  margin: 0rpx;
+  margin-top: 40rpx;
+}
+.msg-box_marque {
+    margin: 0rpx;
+    margin-top: 0rpx;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.button_item {
+  margin: 0rpx;
+}
+
+.text-box {
+  color: black;
+  margin:40rpx;
+  font-size-adjust: 100%;
+  background-color: white
+}
+
+.article_view_hide{  
+ display: none;  
+} 
+
+.article_view_show{  
+ display: block;  
+} 
+
+.btnGroup_marque {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: #fff;
+}
+
+.btnItm {
+    border-radius: 0px;
+    background-color: #bfa69a;
+    color: white;
+}
+.btnAtc {
+    border-radius: 0px;
+    color: gray;
+    background-color: white;
+}

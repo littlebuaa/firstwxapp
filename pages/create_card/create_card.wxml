@@ -1,0 +1,10 @@
+<!--contact.wxml-->
+
+<view class = "block_sty">
+  <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="add_item" class = "button_item" > + </button>
+  <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="draw_images" class = "button_item" > 生成图片 </button>
+  <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap= "share_images" class = "button_item" > 分享 </button>
+
+  <canvas canvas-id="myCanvas" style="border: 1px solid;"/>
+
+</view>

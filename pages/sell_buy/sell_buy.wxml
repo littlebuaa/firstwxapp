@@ -1,0 +1,8 @@
+<!--contact.wxml-->
+
+<view class = "block_sty">
+
+<button style="color:#ff0000;" style="opacity: {{opacity}};color: white; background-color: #bfa69a;" bindtap="go_sell"  class = "button_item"  > 出货 </button>
+    <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="go_buy" class = "button_item" > 求货 </button>
+</view>
+

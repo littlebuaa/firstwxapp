@@ -1,0 +1,32 @@
+<!--contact.wxml-->
+
+<view class = "block_sty">
+
+  <view class = "msg-box" >
+    <text class= "text-box"  > 名称 </text>
+    <input class="input_item" style="text-align:left" placeholder="添加名称" bindinput="nameInput"/>
+  </view>
+
+  <view class = "msg-box"  >
+    <text class= "text-box"  > 数量 </text>
+    <input class="input_item" style="text-align:left"  type = "number" placeholder="填写数量" bindinput="quanInput"/>
+  </view>
+
+  <view class = "msg-box" style = "flex-direction:row" >
+    <text class= "text-box" > 位置 </text>
+    <radio-group class="radio-group"  bindchange="radioChange" style ="flex-direction:column">
+      <label class="input_item" wx:for="{{whereStatus}}" wx:for-item="status" >
+        <radio value="{{status}}" />{{status}} 
+      </label>
+    </radio-group>
+  </view>
+
+  <view class = "msg-box"  >
+    <text class= "text-box"  > 其他描述 </text>
+    <input class="input_item" style="text-align:left" placeholder="请用空格隔开关键词" bindinput="dscrInput" />
+  </view>  
+
+  <button class = "btnItm" bindtap="onSubmit"> 递交 </button> 
+
+</view>
+

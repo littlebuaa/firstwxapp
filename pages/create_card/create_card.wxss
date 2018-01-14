@@ -1,0 +1,17 @@
+/**contact.wxss**/
+.block_sty {
+  margin: 20rpx;
+  margin-top: 200rpx;
+}
+.msg-box {
+    margin: 0rpx;
+    margin-top: 0rpx;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.text-box {
+  color: #bfa69a;
+  background-color: white
+}

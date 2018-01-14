@@ -1,0 +1,8 @@
+<!--contact.wxml-->
+
+<view class = "block_sty">
+  <view class="msg-box">
+    <text class= "text-box"  > I will buy</text>
+  </view>
+</view>
+
