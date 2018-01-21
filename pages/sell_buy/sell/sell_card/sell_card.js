@@ -1,6 +1,7 @@
 //contact.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
+const AV = require('../../../../utils/av-weapp-min.js');
 
 Page({
   data: {
@@ -17,7 +18,8 @@ Page({
     product_posi:null,
     product_dscr:null,
     user:null,
-    productListTemp : []
+    productListTemp : [],
+    imagePath_0 : null
   },
   radioChange: function (e) {
     //console.log('radio发生change事件，携带value值为：', e.detail.value)
@@ -34,8 +36,15 @@ Page({
       marque : marquePage.data.marque,
       product: marquePage.data.product,
       user: pages[pages.length - 3].data.userInfo
-    })
+    });
+    var mquery = new AV.Query('client');
+    //.descending('createdAt')
+    mquery.get("5a5ccbb90b6160006f78a086").then(
+      todos => that.setData({ product_dscr: todos.get("name") })
+    )
+    .catch(console.error);
   },
+
   nameInput: function (e) {
     this.setData({
       product_name : e.detail.value
@@ -82,33 +91,41 @@ Page({
     });
   },
 
+  /*
   share_images: function (event) {
     var img = this.data.savePath;
-
     wx.previewImage({
       current: img, // 当前显示图片的http链接
       urls: [img] // 需要预览的图片http链接列表
     })
-  },
+  },*/
 
-  add_item: function (event) {
+  add_image: function (event) {
     const self = this;
     var img_paths = self.data.imgData;
+    const ctx = wx.createCanvasContext('myCanvas');
     wx.chooseImage({
       sizeType: 'compressed',
       success: function (res) {
         console.log(res.tempFilePaths[0]);
         console.log("added item.");
-        img_paths.push(res.tempFilePaths[0]);
-        //ctx.drawImage(res.tempFilePaths[0], new_index, 0, 50, 50);
-        //ctx.draw();
-        //ctx.save();
+        ctx.drawImage(res.tempFilePaths[0], 0, 0, 50, 50);
+        ctx.draw();
+        ctx.save();
         //new_index += 75;
         self.setData({
-          imgData: img_paths
+          imagePath_0 : res.tempFilePaths[0]
         })
       }
     })
+  },
+
+  onReady: function () {
+    new AV.Query('client')
+      //.descending('createdAt')
+      .find()
+      .then(todos => this.setData({ clientName: todos.name }))
+      .catch(console.error);
   },
 
   onSubmit: function() {
@@ -123,10 +140,10 @@ Page({
       "quan": that.data.product_quan,
       "posi": that.data.product_posi,
       "dscr": that.data.product_dscr,
+      "imagePath_0" : that.data.imagePath_0,
       "status" : "正在审核"
     };
     var tmp = [];
-    //tmp = that.data.productListTemp;
     tmp.push(oneProduct);
     for(var p in that.data.productListTemp) {
       tmp.push(that.data.productListTemp[p])  
@@ -137,42 +154,23 @@ Page({
     });
     console.log(that.data.productListTemp);
 
-    //check info complete
-    /*
-    wx.request({
-    url:"https://docs.google.com/forms/u/1/d/e/1FAIpQLSefeta1osrEl5mbKMr5Bmc3k_ObsgSPnA2iWQvc2r3swiPGeQ/formRespon",
-      method: "POST",
-      data: {
-        2125259858: that.data.user.nickName,
-        797949404 : that.data.marque,
-        1235897830 : that.data.product,
-        1961996089: that.data.product_name,
-        879913023:  that.data.product_quan,
-        2051235908: that.data.product_posi,
-        1824813838: that.data.product_dscr
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res);
-      }
-    });*/
     wx.showModal({
       title: '恭喜，递交成功！',
       content: '小询会尽快审核，请在个人页面查看审核进度',
       success: function (res) {
         if (res.confirm) {
+
+          wx.setStorageSync('productList', that.data.productListTemp);
+          //app.globalData.productList = productListTemp;
           wx.switchTab({
             url: '../../../sell_buy/sell_buy',
           })
-          wx.setStorageSync('productList', that.data.productListTemp)
-          //app.globalData.productList = productListTemp;
-          console.log('用户点击确定')
+          console.log('用户点击确定');
         } else {
-          console.log('用户点击取消')
+          console.log('用户点击取消');
         }
       }
     })
-  }
+
+  },
 })

@@ -1,7 +1,17 @@
 //app.js
+
+const AV = require('./utils/av-weapp-min.js');
+
+// LeanCloud 应用的 ID 和 Key
+AV.init({
+  appId: '8NESxHV6Vf1WRXiodvSWP3l6-gzGzoHsz',
+  appKey: 'KHOMCt2s4UtTGVUMuo2TJKof',
+});
+
 App({
   onLaunch: function () {
     //save list to check
+
     var my_list = wx.getStorageSync('my_list') || []
     if(my_list.length == 0) {
       my_list = {
@@ -52,4 +62,5 @@ App({
     userInfo: null,
     productList: []
   }
+  
 })

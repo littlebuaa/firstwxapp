@@ -1,15 +1,19 @@
 <!--contact.wxml-->
 
 <view class = "block_sty">
-  <view class="msg-box">
-    <text class= "text-box"  >  {{userInfo.nickName}}  </text>
-  </view>
- 
-  <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="getMyProductList" class = "button_item" > 我的出货 > </button>
 
-  <view wx:for="{{productList}}" wx:for-item="p" wx:key="*this" class = "btnGroup">
-      <text class="text-p"> {{p["marque"]}}{{ p["product"] }} : </text>
-      <text class="text-p"> {{p["name"]}} {{p["quan"] }} {{p["posi"] }} {{p["dscr"] }} </text>
-      <text class="text-r"> {{p["status"] }} </text>
-  </view>
+  <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="getMyProductList" class = "button_item" > 刷新我的出货 </button>
+
+
+  <block wx:for="{{ productList}}" wx:for-item="p" wx:key="*this">
+    <view class="btnGroup" style = "flex-direction:row" >
+      <image style="width: 50px; height: 50px; background-color: #eeeeee;" src = "{{p['imagePath_0']}}" mode="{{center}}" > </image>
+      <view class="btnSousGroup" style = "flex-direction:column">
+        <text class="text-p"> {{p["marque"]}} : {{p["name"]}}  </text>
+        <text class="text-p">  {{p["quan"] }} </text>
+        <text class="text-p"> {{p["posi"] }} </text>
+      </view>
+    </view>
+  </block>
+
 </view>

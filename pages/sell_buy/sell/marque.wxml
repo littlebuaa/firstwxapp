@@ -8,8 +8,8 @@
   
   <view >
     <view class="article_view_show">  
-      <button class = "btnItm" bindtap="onClicChangeStatus" id = "lv"> LV </button> 
-      <view class="{{showView.lv?'article_view_show':'article_view_hide'}}">  
+      <button class = "btnItm" bindtap="onClicChangeStatus" id = "LV"> LV </button> 
+      <view class="{{showView.LV?'article_view_show':'article_view_hide'}}">  
         <button class = "btnAtc" bindtap = "go_to_lv_chuhuoka"> 爆款快速通道 </button>
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "包包"> 包包 </button> 
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "服装"> 服装 </button> 
@@ -17,8 +17,8 @@
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "鞋子"> 鞋子 </button>
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "其他"> 其他 </button> 
       </view> 
-      <button class = "btnItm" bindtap="onClicChangeStatus" id = "hermes"> 爱马仕 </button>
-      <view class="{{showView.hermes?'article_view_show':'article_view_hide'}}"> 
+      <button class = "btnItm" bindtap="onClicChangeStatus" id = "HERMES"> 爱马仕 </button>
+      <view class="{{showView.HERMES?'article_view_show':'article_view_hide'}}"> 
         <button class = "btnAtc" bindtap = "go_to_hermes_chuhuoka"> 爆款快速通道 </button> 
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "包包"> 包包 </button> 
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "服装"> 服装 </button> 
@@ -26,8 +26,8 @@
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "鞋子"> 鞋子 </button>
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "其他"> 其他 </button>  
       </view> 
-      <button class = "btnItm" bindtap="onClicChangeStatus" id = "gucci"> GUCCI </button>
-      <view class="{{showView.gucci?'article_view_show':'article_view_hide'}}">  
+      <button class = "btnItm" bindtap="onClicChangeStatus" id = "GUCCI"> GUCCI </button>
+      <view class="{{showView.GUCCI?'article_view_show':'article_view_hide'}}">  
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "包包"> 包包 </button> 
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "服装"> 服装 </button> 
         <button class = "btnAtc" bindtap = "go_to_chuhuoka" id = "配饰"> 配饰 </button> 

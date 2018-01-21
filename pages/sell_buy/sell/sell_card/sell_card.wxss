@@ -4,17 +4,17 @@
   margin-top: 40rpx;
 }
 .msg-box {
-    margin-bottom: 80rpx;
-    margin-left:20rpx;
-    margin-right:20rpx;
-    margin-top: 0rpx;
-    background-color: white;
-    justify-content: left;
+  margin-bottom: 80rpx;
+  margin-left:20rpx;
+  margin-right:20rpx;
+  margin-top: 0rpx;
+  background-color: white;
+  justify-content: left;
 }
 .radio-group{
-    background-color: white;
-    display: flex;
-    justify-content: center;
+  background-color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .input_item {
@@ -24,7 +24,6 @@
 .text-box {
   color: #bfa69a;
   background-color: white;
-  
   margin-bottom: 80rpx;
   margin-left:20rpx;
   margin-right:20rpx;
@@ -34,4 +33,18 @@
     border-radius: 0px;
     background-color: #bfa69a;
     color: white;
+}
+
+.btnImage {
+  border-radius: 0px;
+  border-color: gray-light;  
+  border-style: dotted;  
+  margin-left: 40rpx;
+  color: gray;
+  display: flex;
+}
+
+.btnImage_group {
+  border-radius: 0px;
+  display: flex;
 }
