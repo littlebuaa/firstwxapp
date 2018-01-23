@@ -1,6 +1,7 @@
 //app.js
 
 const AV = require('./utils/av-weapp-min.js');
+import Touches from './utils/Touches.js';
 
 // LeanCloud 应用的 ID 和 Key
 AV.init({
@@ -61,6 +62,6 @@ App({
   globalData: {
     userInfo: null,
     productList: []
-  }
-  
+  },
+  Touches: new Touches()
 })

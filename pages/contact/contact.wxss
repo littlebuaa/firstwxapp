@@ -45,3 +45,18 @@
   font-size: 25rpx; 
 
 }
+
+.item-oper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.oper-delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150rpx;
+    z-index: 1;
+    color: white;
+    background: red;
+}

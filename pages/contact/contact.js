@@ -54,6 +54,28 @@ Page({
     console.log(that.data.productList)
   },
 
+  touchS: function (e) {  // touchstart
+    let start_X = app.Touches.getClientX(e)
+    start_X && this.setData({ startX :start_X })
+    console.log(this.data)
+    console.log("+++++++++++++++++++++++++")
+  },
+  touchM: function (e) {  // touchmove
+    let itemData = app.Touches.touchM(e, this.data.productList, this.data.startX)
+    itemData && this.setData({ productList:itemData })
+
+  },
+  touchE: function (e) {  // touchend
+    const width = 150  // 定义操作列表宽度
+    let itemData = app.Touches.touchE(e, this.data.productList, this.data.startX, width)
+    itemData && this.setData({ productList: itemData })
+  },
+
+  itemDelete: function (e) {  // itemDelete
+    let itemData = app.Touches.deleteItem(e, this.data.productList)
+    itemData && this.setData({ productList: itemData })
+  },
+
   getMyProductList:function () {
     this.setData({
       productList : wx.getStorageSync('productList')
