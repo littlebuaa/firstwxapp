@@ -97,8 +97,6 @@ Page({
             result_string[0] = m_name[result_stock];
             result_string[1] = res.data[result_stock].inStock;
             res_list.push(result_string);
-            console.log(res_list.length);
-            console.log(list_size);
             if (res_list.length == list_size) {
               self.setData({
                 trace_result: res_list,
@@ -109,5 +107,7 @@ Page({
         });
       }
       wx.setStorageSync('my_list', m_name);
-    }
+    },
+
+
 })

@@ -56,12 +56,10 @@ Page({
       url: 'sell/marque',
     })
   },
-
   go_buy: function () {
     wx.navigateTo({
       url: 'buy/marque',
     })
   },
-
   
 })

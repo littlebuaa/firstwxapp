@@ -62,5 +62,4 @@ App({
     userInfo: null,
     productList: []
   }
-  
 })

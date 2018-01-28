@@ -42,6 +42,14 @@
   display:flex;
   align-items: left;
   justify-content: left;
-  font-size: 25rpx; 
+  font-size: 40rpx; 
 
 }
+
+.article_view_hide{  
+ display: none;  
+} 
+
+.article_view_show{  
+ display: block;  
+} 

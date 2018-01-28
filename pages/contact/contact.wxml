@@ -4,10 +4,9 @@
 
   <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="getMyProductList" class = "button_item" > 刷新我的出货 </button>
 
-
-  <block wx:for="{{ productList}}" wx:for-item="p" wx:key="*this">
-    <view class="btnGroup" style = "flex-direction:row" >
-      <image style="width: 50px; height: 50px; background-color: #eeeeee;" src = "{{p['imagePath_0']}}" mode="{{center}}" > </image>
+  <block wx:for="{{productList}}" wx:for-item="p" wx:for-index="idx" wx:key="*this">
+    <view class="btnGroup" style = "flex-direction:row" bindlongtap="onClicChangeStatus" bindtap="removeThisProduct" data-index= "{{idx}}" >
+      <image style="width: 150rpx; height: 150rpx; background-color: #eeeeee;" src = "{{p['imagePath_0']}}" mode="{{aspectFill}}" > </image>
       <view class="btnSousGroup" style = "flex-direction:column">
         <text class="text-p"> {{p["marque"]}} : {{p["name"]}}  </text>
         <text class="text-p">  {{p["quan"] }} </text>
@@ -15,5 +14,6 @@
       </view>
     </view>
   </block>
+ 
 
 </view>

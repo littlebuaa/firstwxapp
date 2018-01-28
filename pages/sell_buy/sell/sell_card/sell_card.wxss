@@ -48,3 +48,11 @@
   border-radius: 0px;
   display: flex;
 }
+
+.article_view_hide{  
+ display: none;  
+} 
+
+.article_view_show{  
+ display: block;  
+} 

@@ -4,34 +4,40 @@
 
   <view class = "msg-box" >
     <text class= "text-box"  > 名称 </text>
-    <input class="input_item" style="text-align:left" placeholder="添加名称" bindinput="nameInput"/>
+    <input class="input_item" style="text-align:left" placeholder="添加名称" bindinput="nameInput" value="{{product_name}}"/>
   </view>
 
   <view class = "msg-box"  >
     <text class= "text-box"  > 数量 </text>
-    <input class="input_item" style="text-align:left"  type = "number" placeholder="填写数量" bindinput="quanInput"/>
+    <input class="input_item" style="text-align:left"  type = "number" placeholder="填写数量" bindinput="quanInput" value="{{product_quan}}"/>
   </view>
 
   <view class = "msg-box" style = "flex-direction:row" >
     <text class= "text-box" > 位置 </text>
     <radio-group class="radio-group"  bindchange="radioChange" style ="flex-direction:column">
-      <label class="input_item" wx:for="{{whereStatus}}" wx:for-item="status" >
-        <radio value="{{status}}" />{{status}} 
+      <label class="input_item" wx:for="{{ whereStatus}}" wx:for-item="status" >
+        <radio value="{{status}}" wx:if="{{status == product_posi.name}}" checked="true" > {{status}} </radio>
+        <radio value="{{status}}" wx:if="{{status != product_posi.name}}" checked="false" > {{status}} </radio>
       </label>
     </radio-group>
   </view>
 
   <view class = "msg-box"  >
     <text class= "text-box"  > 其他描述 </text>
-    <input class="input_item" style="text-align:left" placeholder="请用空格隔开关键词" bindinput="dscrInput" />
+    <input class="input_item" style="text-align:left" placeholder="请用空格隔开关键词" bindinput="dscrInput" value="{{product_dscr}}"/>
   </view>
 
   <view class = "msg-box"  >
     <text class= "text-box"  > 上传照片 </text>
     <view class = "btnImage_group" style="flex-direction:row;">
-    <canvas class = "btnImage" style="width: 50px; height: 50px;" bindtap = "add_image" canvas-id="myCanvas"> </canvas>
+    <image class = "btnImage" style="width: 50px; height: 50px;" bindtap = "add_image" canvas-id="myCanvas" mode="aspectFit"> </image>
     </view>
   </view>
-
-  <button class = "btnItm" bindtap="onSubmit"> 递交 </button> 
+ 
+  <view class="{{product_name?'article_view_show':'article_view_hide'}}">  
+    <button class = "btnItm" bindtap="onSubmit"> 递交 </button>
+  </view>
+  <view class="{{product_name?'article_view_hide':'article_view_show'}}">  
+    <button class = "btnItm" disabled = "true"> 递交 </button>
+  </view>
 </view>

@@ -15,16 +15,16 @@ Page({
     product: null,
     product_name: null,
     product_quan:null,
-    product_posi:null,
+    product_posi:{'name' : "noPos", 'checked' : 'false'},
     product_dscr:null,
     user:null,
     productListTemp : [],
     imagePath_0 : null
   },
   radioChange: function (e) {
-    //console.log('radio发生change事件，携带value值为：', e.detail.value)
+    console.log(e.detail.value)
     this.setData({
-        product_posi : e.detail.value
+        product_posi: e.detail.value
     })
   },
   onLoad: function () {
@@ -32,11 +32,28 @@ Page({
     var pages = getCurrentPages();
     // load marque from previous page
     var marquePage = pages[pages.length - 2];
-    that.setData({
-      marque : marquePage.data.marque,
-      product: marquePage.data.product,
-      user: pages[pages.length - 3].data.userInfo
-    });
+    console.log(marquePage.data)
+    if(marquePage.data.marque) {
+      that.setData({
+        marque : marquePage.data.marque,
+        product: marquePage.data.product,
+        user: pages[pages.length - 3].data.userInfo,
+      });
+    }
+    else {
+      console.log(marquePage.data.productList[0].name)
+      console.log(marquePage.data.productList[0].quan)
+      console.log(marquePage.data.productList[0].posi)
+      console.log(marquePage.data.productList[0].dscr)
+      that.setData({
+        product_name: marquePage.data.productList[0].name,
+        product_quan: marquePage.data.productList[0].quan,
+        product_posi: ({name: marquePage.data.productList[0].posi, checked: 'true'}),
+        product_dscr: marquePage.data.productList[0].dscr,
+      });
+
+    }
+
     var mquery = new AV.Query('client');
     //.descending('createdAt')
     mquery.get("5a5ccbb90b6160006f78a086").then(
@@ -71,7 +88,7 @@ Page({
     console.log(imgDataSize);
     for (var i = 0; i < imgDataSize; i++) {
       console.log(img_path[i]);
-      ctx.drawImage(img_path[i], 0, new_index, 50, 50);
+      ctx.drawImage(img_path[i], 0, new_index, 80, 80);
       new_index += 75;
     }
     ctx.draw();
@@ -109,7 +126,7 @@ Page({
       success: function (res) {
         console.log(res.tempFilePaths[0]);
         console.log("added item.");
-        ctx.drawImage(res.tempFilePaths[0], 0, 0, 50, 50);
+        ctx.drawImage(res.tempFilePaths[0], 0, 0, 80, 80,"aspectFill");
         ctx.draw();
         ctx.save();
         //new_index += 75;
@@ -159,15 +176,11 @@ Page({
       content: '小询会尽快审核，请在个人页面查看审核进度',
       success: function (res) {
         if (res.confirm) {
-
           wx.setStorageSync('productList', that.data.productListTemp);
           //app.globalData.productList = productListTemp;
           wx.switchTab({
             url: '../../../sell_buy/sell_buy',
           })
-          console.log('用户点击确定');
-        } else {
-          console.log('用户点击取消');
         }
       }
     })
