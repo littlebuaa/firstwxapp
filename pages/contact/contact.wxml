@@ -6,7 +6,7 @@
 
   <block wx:for="{{productList}}" wx:for-item="p" wx:for-index="idx" wx:key="*this">
     <view class="btnGroup" style = "flex-direction:row" bindlongtap="onClicChangeStatus" bindtap="removeThisProduct" data-index= "{{idx}}" >
-      <image style="width: 150rpx; height: 150rpx; background-color: #eeeeee;" src = "{{p['imagePath_0']}}" mode="{{aspectFill}}" > </image>
+      <image style="width: 150rpx; height: 150rpx; background-color: #eeeeee;" src = "{{p['imagePath_0']}}" mode="aspectFit" > </image>
       <view class="btnSousGroup" style = "flex-direction:column">
         <text class="text-p"> {{p["marque"]}} : {{p["name"]}}  </text>
         <text class="text-p">  {{p["quan"] }} </text>
