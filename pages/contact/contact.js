@@ -1,6 +1,7 @@
 //contact.js
 //获取应用实例
 const app = getApp()
+const AV = require('../../utils/av-weapp-min.js');
 
 Page({
   data: {
@@ -11,6 +12,10 @@ Page({
   },
   onLoad: function () {
     var that = this
+    AV.User.loginWithWeapp().then(user => {
+      this.globalData.user = user.toJSON();
+    }).catch(console.error);
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -50,8 +55,20 @@ Page({
     that.setData({
       productList: wx.getStorageSync('productList')
     });
-    console.log("in contact")
-    console.log(that.data.productList)
+    
+    // 假设已经通过 AV.User.loginWithWeapp() 登录
+    // 获得当前登录用户
+    const user = AV.User.current();
+    // 调用小程序 API，得到用户信息
+    wx.getUserInfo({
+      success: ({ userInfo }) => {
+        // 更新当前用户的信息
+        user.set(userInfo).save().then(user => {
+          // 成功，此时可在控制台中看到更新后的用户信息
+          that.globalData.user = user.toJSON();
+        }).catch(console.error);
+      }
+    });
   },
 
   touchS: function (e) {  // touchstart
@@ -74,6 +91,7 @@ Page({
   itemDelete: function (e) {  // itemDelete
     let itemData = app.Touches.deleteItem(e, this.data.productList)
     itemData && this.setData({ productList: itemData })
+    wx.setStorageSync('productList', this.data.productList);
   },
 
   getMyProductList:function () {

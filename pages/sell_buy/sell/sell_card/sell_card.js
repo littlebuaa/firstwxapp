@@ -37,12 +37,13 @@ Page({
       product: marquePage.data.product,
       user: pages[pages.length - 3].data.userInfo
     });
+    /*
     var mquery = new AV.Query('client');
     //.descending('createdAt')
     mquery.get("5a5ccbb90b6160006f78a086").then(
       todos => that.setData({ product_dscr: todos.get("name") })
     )
-    .catch(console.error);
+    .catch(console.error);*/
   },
 
   nameInput: function (e) {
@@ -121,11 +122,13 @@ Page({
   },
 
   onReady: function () {
+    /*
     new AV.Query('client')
       //.descending('createdAt')
       .find()
       .then(todos => this.setData({ clientName: todos.name }))
       .catch(console.error);
+      */
   },
 
   onSubmit: function() {
