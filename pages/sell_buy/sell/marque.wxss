@@ -10,22 +10,18 @@
     display: flex;
     justify-content: center;
 }
-
 .button_item {
   margin: 0rpx;
 }
-
 .text-box {
   color: black;
   margin:40rpx;
   font-size-adjust: 100%;
   background-color: white
 }
-
 .article_view_hide{  
  display: none;  
 } 
-
 .article_view_show{  
  display: block;  
 } 

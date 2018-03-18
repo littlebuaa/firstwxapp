@@ -1,7 +1,6 @@
 <!--contact.wxml-->
 
 <view class = "block_sty">
-
   <view class = "msg-box" >
     <text class= "text-box"  > 名称 </text>
     <input class="input_item" style="text-align:left" placeholder="添加名称" bindinput="nameInput" value="{{product_name}}"/>

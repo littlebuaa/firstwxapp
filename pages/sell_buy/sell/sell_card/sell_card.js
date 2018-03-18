@@ -18,6 +18,7 @@ Page({
     product_posi:{'name' : "noPos", 'checked' : 'false'},
     product_dscr:null,
     user:null,
+    userId:null,
     productListTemp : [],
     imagePath_0 : null
   },
@@ -29,6 +30,13 @@ Page({
   },
   onLoad: function () {
     var that = this
+    AV.User.loginWithWeapp().then(user => {
+      that.setData({
+        userId :  user.toJSON().authData.lc_weapp.openid
+      })
+      wx.setStorageSync('userId', user.toJSON().authData.lc_weapp.openid);
+    }).catch(console.error);
+    
     var pages = getCurrentPages();
     // load marque from previous page
     var marquePage = pages[pages.length - 2];
@@ -53,13 +61,6 @@ Page({
       });
 
     }
-
-    var mquery = new AV.Query('client');
-    //.descending('createdAt')
-    mquery.get("5a5ccbb90b6160006f78a086").then(
-      todos => that.setData({ product_dscr: todos.get("name") })
-    )
-    .catch(console.error);
   },
 
   nameInput: function (e) {
@@ -124,8 +125,8 @@ Page({
     wx.chooseImage({
       sizeType: 'compressed',
       success: function (res) {
-        console.log(res.tempFilePaths[0]);
-        console.log("added item.");
+        //console.log(res.tempFilePaths[0]);
+        //console.log("added item.");
         ctx.drawImage(res.tempFilePaths[0], 0, 0, 80, 80,"aspectFill");
         ctx.draw();
         ctx.save();
@@ -138,11 +139,12 @@ Page({
   },
 
   onReady: function () {
-    new AV.Query('client')
-      //.descending('createdAt')
-      .find()
-      .then(todos => this.setData({ clientName: todos.name }))
-      .catch(console.error);
+    //new AV.Query('client')
+    //  //.descending('createdAt')
+    //  .find()
+    //  .then(todos => this.setData({ clientName: todos.name }))
+    //  .catch(console.error);
+
   },
 
   onSubmit: function() {
@@ -170,7 +172,6 @@ Page({
       productListTemp: tmp
     });
     console.log(that.data.productListTemp);
-
     wx.showModal({
       title: '恭喜，递交成功！',
       content: '小询会尽快审核，请在个人页面查看审核进度',
@@ -181,6 +182,26 @@ Page({
           wx.switchTab({
             url: '../../../sell_buy/sell_buy',
           })
+          // 声明一个 Product 类型
+          var Product = AV.Object.extend('product');
+          // 新建一个 Product 对象
+          var product = new Product();
+          product.set('userId',   that.data.userId);
+          product.set('marque', that.data.marque);
+          product.set('product', that.data.product);
+          product.set('name', that.data.product_name);
+          product.set('quan', that.data.product_quan);
+          product.set('posi', that.data.product_posi.name);
+          product.set('dscr', that.data.product_dscr);
+          product.set('imagePath_0', that.data.imagePath_0);
+          product.set('status', "正在审核");
+          product.save().then(function (p) {
+            // 成功保存之后，执行其他逻辑.
+            console.log('New object created with objectId: ' + p.id);
+          }, function (error) {
+            // 异常处理
+            console.error('Failed to create new object, with error message: ' + error.message);
+          });
         }
       }
     })

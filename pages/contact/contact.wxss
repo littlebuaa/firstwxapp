@@ -1,6 +1,6 @@
 /**contact.wxss**/
 .block_sty {
-  margin: 20rpx;
+  margin: 0rpx;
   margin-top: 100rpx;
 }
 .msg-box {
@@ -17,7 +17,8 @@
 }
 
 .text-p {
-  margin-left: 5rpx;
+  margin-left: 10rpx;
+  margin-bottom:0rpx;
   color: black;
 }
 
@@ -27,23 +28,24 @@
   color: red;
   font-size-adjust: 1rpx
 }
+
 .btnGroup {
-  margin: 10rpx;
-  background-color: whites;
+  margin: 0rpx;
+  border-bottom-color: black;
+  background-color: whitesmoke;
+  border-radius: 0px;
   display:flex;
   align-items: center;
   justify-content: left;
   font-size: 19rpx
 }
 .btnSousGroup {
-  margin: 10rpx;
-  background-color: white;
-  border-bottom-color: whitesmoke;
+  margin: 20rpx;
   display:flex;
   align-items: left;
   justify-content: left;
-  font-size: 40rpx; 
-
+  font-size: 30rpx; 
+  border-radius: 0px;
 }
 
 .article_view_hide{  

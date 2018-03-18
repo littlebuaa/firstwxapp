@@ -11,7 +11,6 @@ AV.init({
 App({
   onLaunch: function () {
     //save list to check
-
     var my_list = wx.getStorageSync('my_list') || []
     if(my_list.length == 0) {
       my_list = {

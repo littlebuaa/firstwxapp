@@ -2,18 +2,24 @@
 
 <view class = "block_sty">
 
-  <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="getMyProductList" class = "button_item" > 刷新我的出货 </button>
-
+  <view class="{{productList.length == 0?'article_view_show':'article_view_hide'}}" >
+    <text class="text-p"> 没有出货记录昂</text>
+  </view>
+      
   <block wx:for="{{productList}}" wx:for-item="p" wx:for-index="idx" wx:key="*this">
-    <view class="btnGroup" style = "flex-direction:row" bindlongtap="onClicChangeStatus" bindtap="removeThisProduct" data-index= "{{idx}}" >
-      <image style="width: 150rpx; height: 150rpx; background-color: #eeeeee;" src = "{{p['imagePath_0']}}" mode="aspectFit" > </image>
+    <view class="btnGroup" style = "flex-direction:row" bindtap="removeThisProduct" data-index= "{{idx}}" >
+      <view class="btnSousGroup" style = "flex-direction:column">  </view>
+      <image style="width:150rpx; height:150rpx; background-color:whitesmoke; " src = "{{p['imagePath_0']}}" mode="aspectFit" > </image>
       <view class="btnSousGroup" style = "flex-direction:column">
         <text class="text-p"> {{p["marque"]}} : {{p["name"]}}  </text>
         <text class="text-p">  {{p["quan"] }} </text>
-        <text class="text-p"> {{p["posi"] }} </text>
+        <text class="text-p" > {{p["status"] }} </text>
       </view>
     </view>
+    <view style="width:100% ; height:1rpx; background-color: gray">  </view>
   </block>
+
+  <button style="background-color: rgb(255, 0, 0);" plain style="color: #bfa69a; border-color: #bfa69a;" bindtap="fetchProducts"  class = "button_item" > 刷新出货单 </button>
  
 
 </view>
